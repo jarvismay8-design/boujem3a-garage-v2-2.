@@ -1,0 +1,457 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#0B5D3B"><title>Boujem3a Garage Receptionist v2.2</title><style>
+:root{--green:#0B5D3B;--green2:#0a4a31;--red:#C52828;--bg:#f6f3ec;--card:#fffdf8;--ink:#17231d;--muted:#68756e;--line:#dfe5df;--shadow:0 18px 55px rgba(18,40,29,.10);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0%,#e8f0e9 0,transparent 31%),radial-gradient(circle at 100% 0%,#f8e7e4 0,transparent 22%),var(--bg);color:var(--ink);min-height:100vh}.app{max-width:1240px;margin:0 auto;padding:18px}.top{display:flex;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}.brand{display:flex;align-items:center;gap:12px}.logo{width:46px;height:46px;border-radius:15px;background:linear-gradient(145deg,var(--green),#0f764d);display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:0 8px 24px rgba(11,93,59,.22)}.brand h1{font-size:18px;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.badges{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.badge{font-size:11px;font-weight:800;letter-spacing:.04em;padding:7px 10px;border-radius:999px;background:#eef4ef;color:var(--green);border:1px solid #d8e6dc}.badge.test{background:#fff0ee;color:#9b2424;border-color:#f1cdca}.layout{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(320px,.7fr);gap:16px}.panel{background:rgba(255,253,248,.94);border:1px solid rgba(255,255,255,.7);box-shadow:var(--shadow);border-radius:24px;overflow:hidden}.chatHead{background:linear-gradient(135deg,var(--green2),var(--green));color:#fff;padding:18px 20px;display:flex;align-items:center;justify-content:space-between}.chatHead strong{font-size:17px}.chatHead small{display:block;opacity:.76;margin-top:2px}.langSel{background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:10px;padding:8px 10px}.chatBody{height:520px;overflow:auto;padding:18px;background:linear-gradient(#fffdf9,#fbfaf6)}.msg{max-width:82%;padding:11px 13px;border-radius:17px;margin:7px 0;line-height:1.4;font-size:14px;white-space:pre-wrap}.assistant{background:#edf5ef;border:1px solid #d5e7d9;border-bottom-left-radius:6px}.user{margin-left:auto;background:var(--green);color:#fff;border-bottom-right-radius:6px}.system{max-width:100%;margin:9px auto;text-align:center;background:#fff4f2;color:#8f3131;border:1px solid #f0d3cf;font-size:12px}.typing{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:12px;margin:8px 2px}.dots span{display:inline-block;width:5px;height:5px;background:#93a39a;border-radius:50%;margin-right:3px;animation:b 1s infinite}.dots span:nth-child(2){animation-delay:.15s}.dots span:nth-child(3){animation-delay:.3s}@keyframes b{0%,80%,100%{opacity:.25;transform:translateY(0)}40%{opacity:1;transform:translateY(-3px)}}.composer{border-top:1px solid var(--line);padding:12px;display:flex;gap:9px;background:#fff}.composer textarea{resize:none;min-height:48px;max-height:110px;flex:1;border:1px solid var(--line);border-radius:15px;padding:13px;font:inherit;outline:none;background:#fff}.composer textarea:focus{border-color:#7eb096;box-shadow:0 0 0 3px rgba(11,93,59,.08)}button{font:inherit}.send{border:0;border-radius:15px;background:var(--green);color:#fff;font-weight:800;padding:0 18px;cursor:pointer}.send:disabled{opacity:.5}.tools{display:flex;gap:8px;padding:0 12px 12px;background:#fff;flex-wrap:wrap}.ghost{border:1px solid var(--line);background:#fff;border-radius:12px;padding:8px 10px;cursor:pointer;color:#34423a}.ghost:hover{background:#f6f8f6}.scenario{max-width:210px}.ownerHead{padding:18px 18px 12px;border-bottom:1px solid var(--line);display:flex;align-items:flex-start;justify-content:space-between;gap:10px}.ownerHead h2{margin:0;font-size:14px;letter-spacing:.07em}.ownerHead p{margin:4px 0 0;color:var(--muted);font-size:12px}.liveDot{width:9px;height:9px;background:var(--red);border-radius:50%;box-shadow:0 0 0 5px rgba(197,40,40,.10);margin-top:3px}.ownerBody{padding:14px 18px 18px}.field{padding:10px 0;border-bottom:1px solid #ecefe9}.label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.07em;color:#7b887f}.value{font-size:14px;margin-top:4px;white-space:pre-wrap}.empty{color:#9aa39e}.ownerActions{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}.copyBtn{border:0;background:#17231d;color:#fff;border-radius:12px;padding:9px 11px;cursor:pointer}.statusSel{border:1px solid var(--line);border-radius:10px;padding:8px;background:#fff;max-width:100%}.rawBox{margin-top:12px;border:1px solid var(--line);border-radius:14px;padding:10px;max-height:180px;overflow:auto;background:#fbfbf7;font-size:12px;display:none}.rawBox.open{display:block}.footer{color:#7d887f;font-size:11px;text-align:center;margin-top:14px}.reviewCard{border:1px solid #d9e8dd;border-left:4px solid var(--green);background:#f6faf7;border-radius:14px;padding:10px;margin-top:8px}.reviewCard strong{display:block;margin-bottom:5px}.reviewCard div{font-size:13px;margin:2px 0}
+@media(max-width:860px){.layout{grid-template-columns:1fr}.owner{order:2}.chatBody{height:56vh;min-height:430px}.app{padding:10px}.top{align-items:flex-start}.badges{max-width:45%}.panel{border-radius:18px}}@media(max-width:520px){.brand p{display:none}.msg{max-width:90%}.chatHead{padding:15px}.chatBody{padding:12px}.scenario{max-width:170px}.send{padding:0 14px}.badge{padding:6px 8px;font-size:10px}}
+
+</style></head><body>
+<div class="app">
+  <div class="top">
+    <div class="brand"><div class="logo">B3</div><div><h1 id="brandName"></h1><p id="brandSub"></p></div></div>
+    <div class="badges"><span class="badge test" id="testBadge"></span><span class="badge" id="versionBadge"></span></div>
+  </div>
+  <div class="layout">
+    <section class="panel chat">
+      <div class="chatHead"><div><strong id="chatTitle"></strong><small id="chatSub"></small></div><select id="langSelect" class="langSel" aria-label="Language"><option value="de">DE</option><option value="fr">FR</option><option value="it">IT</option><option value="en">EN</option></select></div>
+      <div id="chatBody" class="chatBody" aria-live="polite"></div>
+      <div id="typing" class="typing" hidden><span id="typingText"></span><span class="dots"><span></span><span></span><span></span></span></div>
+      <div class="composer"><textarea id="input" rows="2"></textarea><button id="send" class="send"></button></div>
+      <div class="tools"><button id="reset" class="ghost"></button><select id="scenario" class="ghost scenario"><option value="">Test scenario…</option><option value="de-normal">DE · normal</option><option value="en-annoyed">EN · annoyed</option><option value="fr-correction">FR · correction</option><option value="it-multi">IT · multiple jobs</option></select><button id="runScenario" class="ghost">Load scenario</button></div>
+    </section>
+    <aside class="panel owner">
+      <div class="ownerHead"><div><h2 id="ownerTitle"></h2><p id="ownerSub"></p></div><div class="liveDot" title="Live"></div></div>
+      <div class="ownerBody">
+        <div id="ownerFields"></div>
+        <div class="field"><div class="label" id="statusLabel"></div><div class="value"><select id="status" class="statusSel"><option>New request</option><option>Needs review</option><option>Awaiting owner approval</option><option>Awaiting customer response</option><option>Confirmed</option><option>Reschedule requested</option><option>Closed</option></select></div></div>
+        <div class="ownerActions"><button id="copy" class="copyBtn"></button><button id="toggleRaw" class="ghost"></button></div>
+        <div id="raw" class="rawBox"></div>
+      </div>
+    </aside>
+  </div>
+  <div id="footer" class="footer"></div>
+</div>
+<script>
+const businessConfig = {
+  business: { name: 'Säntis Garage', locale: 'de-CH', timezone: 'Europe/Zurich' },
+  receptionist: { displayName: 'Boujem3a' },
+  branding: { primary: '#0B5D3B', accent: '#C52828', surface: '#F7F7F4' },
+  languages: { supported: ['de','fr','it','en'], default: 'de' },
+  scheduling: { mode: 'request_only', liveAvailabilityEnabled: false },
+  pacing: {
+    burstDebounce: [250,650],
+    typingStart: [300,600],
+    tiny: [700,1400],
+    normal: [1300,2700],
+    complex: [2200,4200],
+    hardCap: 4500,
+  },
+};
+
+const t = {
+  de: {
+    localeName:'Deutsch', welcome:'Grüezi! Ich bin {name}, die digitale Rezeption der fiktiven Säntis Garage. Bitte nur Testdaten verwenden. Es wird nichts versendet und kein Termin gebucht. Wobei kann ich helfen?',
+    placeholder:'Nachricht schreiben…', send:'Senden', newDemo:'Neue Demo', testMode:'TESTMODUS', staging:'v2.2 Staging', owner:'INHABERANSICHT', liveDraft:'LIVE-ENTWURF', ready:'BEREIT',
+    requestedWork:'Arbeiten', vehicle:'Fahrzeug', year:'Jahr', customer:'Name', phone:'Telefon', preferredTime:'Wunschzeit', language:'Sprache', notes:'Notizen', validation:'Validierung', raw:'Verlauf', copy:'Zusammenfassung kopieren', copied:'Kopiert', status:'Status',
+    demoWarn:'Nur Demo · Bitte Testdaten verwenden · Nichts wird versendet oder gebucht.', typing:'{name} schreibt…', phoneValid:'Format plausibel; Nummerninhaber nicht verifiziert.', phoneInvalid:'Das Telefonnummernformat scheint noch nicht vollständig zu sein.',
+    reviewTitle:'Bitte kurz prüfen:', reviewAsk:'Stimmt das so? Sie können noch etwas korrigieren oder mit „Ja“ bestätigen.', finalThanks:'Danke. Die Anfrage ist als Demo für die Garage vorbereitet. Die Wunschzeit ist noch nicht bestätigt.',
+    appointmentBoundary:'Noch nicht. Ich habe die Zeit nur als Wunsch erfasst; die Garage muss sie erst bestätigen.',
+    greet:['Grüezi! Wie kann ich helfen?','Hallo! Was soll die Garage für Sie erledigen?','Grüezi – gerne. Worum geht es bei Ihrem Fahrzeug?'],
+    thanks:['Sehr gerne.','Gern geschehen.','Natürlich.'], goodbye:['Auf Wiedersehen!','Bis bald – alles Gute.','Danke und einen schönen Tag.'],
+    annoyed:['Entschuldigung – Sie haben recht.','Verstanden, danke für den Hinweis.','Entschuldigen Sie die Wiederholung.'],
+    askWork:['Was soll die Garage für Sie erledigen?','Welche Arbeiten sollen gemacht werden?','Worum geht es bei der Reparatur oder dem Service?'],
+    askVehicle:['Um welches Fahrzeugmodell geht es?','Welches Fahrzeug haben Sie?','Können Sie mir Marke und Modell nennen?'],
+    askYear:['Welches Baujahr hat das Fahrzeug?','Kennen Sie ungefähr das Baujahr?','Welches Jahr kann ich für das Fahrzeug notieren?'],
+    askName:['Auf welchen Namen darf ich die Anfrage erfassen?','Wie darf ich Ihren Namen notieren?','Welchen Namen soll ich für die Anfrage verwenden?'],
+    askPhone:['Unter welcher Telefonnummer kann die Garage Sie erreichen?','Welche Telefonnummer darf ich notieren?','Wie kann die Garage Sie telefonisch erreichen?'],
+    askTime:['Wann würde es Ihnen ungefähr passen?','Welche Wunschzeit darf ich notieren?','Gibt es einen bevorzugten Tag oder eine Uhrzeit?'],
+    correction:'Alles klar, ich habe das korrigiert.', needClarification:'Welche Angabe ist korrekt?', unknown:'Nicht sicher', notProvided:'Noch offen',
+  },
+  fr: {
+    localeName:'Français', welcome:'Bonjour ! Je suis {name}, la réception numérique du garage fictif Säntis Garage. Merci d’utiliser uniquement des données de test. Aucun message n’est envoyé et aucun rendez-vous n’est réservé. Comment puis-je vous aider ?',
+    placeholder:'Écrire un message…', send:'Envoyer', newDemo:'Nouvelle démo', testMode:'MODE TEST', staging:'v2.2 Staging', owner:'VUE GARAGE', liveDraft:'BROUILLON EN DIRECT', ready:'PRÊT',
+    requestedWork:'Travaux', vehicle:'Véhicule', year:'Année', customer:'Nom', phone:'Téléphone', preferredTime:'Horaire souhaité', language:'Langue', notes:'Notes', validation:'Validation', raw:'Conversation', copy:'Copier le résumé', copied:'Copié', status:'Statut',
+    demoWarn:'Démo uniquement · Utilisez des données de test · Rien n’est envoyé ni réservé.', typing:'{name} écrit…', phoneValid:'Format plausible ; titulaire du numéro non vérifié.', phoneInvalid:'Le format du numéro semble incomplet.',
+    reviewTitle:'Merci de vérifier :', reviewAsk:'Est-ce correct ? Vous pouvez encore corriger une information ou répondre « Oui ».', finalThanks:'Merci. La demande de démonstration est prête pour le garage. L’horaire souhaité reste à confirmer.',
+    appointmentBoundary:'Pas encore. J’ai seulement enregistré cet horaire comme préférence ; le garage doit encore le confirmer.',
+    greet:['Bonjour ! Comment puis-je vous aider ?','Bonjour ! Que souhaitez-vous faire au garage ?','Bonjour – je vous écoute. Quel est le besoin pour le véhicule ?'],
+    thanks:['Avec plaisir.','Je vous en prie.','Bien sûr.'], goodbye:['Au revoir !','À bientôt, bonne journée.','Merci et à bientôt.'],
+    annoyed:['Désolé, vous avez raison.','Compris, merci de me l’avoir signalé.','Désolé pour la répétition.'],
+    askWork:['Que doit faire le garage ?','Quels travaux souhaitez-vous faire ?','Quel service ou quelle réparation faut-il prévoir ?'],
+    askVehicle:['Quel est le véhicule ?','Pouvez-vous me donner la marque et le modèle ?','De quel modèle s’agit-il ?'],
+    askYear:['De quelle année est le véhicule ?','Connaissez-vous l’année du véhicule ?','Quelle année dois-je noter ?'],
+    askName:['À quel nom dois-je enregistrer la demande ?','Quel nom puis-je noter ?','Comment puis-je vous enregistrer ?'],
+    askPhone:['À quel numéro le garage peut-il vous joindre ?','Quel numéro de téléphone puis-je noter ?','Comment le garage peut-il vous joindre par téléphone ?'],
+    askTime:['Quand cela vous conviendrait-il ?','Quel horaire préférez-vous ?','Avez-vous un jour ou une heure de préférence ?'],
+    correction:'D’accord, j’ai corrigé cette information.', needClarification:'Quelle information est correcte ?', unknown:'Pas sûr', notProvided:'À compléter',
+  },
+  it: {
+    localeName:'Italiano', welcome:'Buongiorno! Sono {name}, la reception digitale dell’officina fittizia Säntis Garage. Usi solo dati di prova. Non viene inviato nulla e nessun appuntamento viene prenotato. Come posso aiutarla?',
+    placeholder:'Scrivi un messaggio…', send:'Invia', newDemo:'Nuova demo', testMode:'MODALITÀ TEST', staging:'v2.2 Staging', owner:'VISTA OFFICINA', liveDraft:'BOZZA LIVE', ready:'PRONTO',
+    requestedWork:'Lavori', vehicle:'Veicolo', year:'Anno', customer:'Nome', phone:'Telefono', preferredTime:'Orario preferito', language:'Lingua', notes:'Note', validation:'Validazione', raw:'Conversazione', copy:'Copia riepilogo', copied:'Copiato', status:'Stato',
+    demoWarn:'Solo demo · Usare dati di prova · Nulla viene inviato o prenotato.', typing:'{name} sta scrivendo…', phoneValid:'Formato plausibile; titolare del numero non verificato.', phoneInvalid:'Il formato del numero sembra incompleto.',
+    reviewTitle:'Controlli brevemente:', reviewAsk:'È tutto corretto? Può ancora correggere un dato o rispondere « Sì ».', finalThanks:'Grazie. La richiesta demo è pronta per l’officina. L’orario preferito deve ancora essere confermato.',
+    appointmentBoundary:'Non ancora. Ho registrato l’orario solo come preferenza; l’officina deve ancora confermarlo.',
+    greet:['Buongiorno! Come posso aiutarla?','Salve! Cosa deve fare l’officina?','Buongiorno – mi dica pure, di cosa ha bisogno il veicolo?'],
+    thanks:['Con piacere.','Prego.','Certamente.'], goodbye:['Arrivederci!','A presto, buona giornata.','Grazie e a presto.'],
+    annoyed:['Mi scusi, ha ragione.','Capito, grazie per avermelo fatto notare.','Mi scusi per la ripetizione.'],
+    askWork:['Che lavoro deve fare l’officina?','Quali interventi desidera fare?','Che servizio o riparazione serve?'],
+    askVehicle:['Di che veicolo si tratta?','Può indicarmi marca e modello?','Qual è il modello del veicolo?'],
+    askYear:['Di che anno è il veicolo?','Conosce l’anno del veicolo?','Quale anno devo annotare?'],
+    askName:['A quale nome devo registrare la richiesta?','Quale nome posso annotare?','Come posso registrare il suo nome?'],
+    askPhone:['A quale numero può contattarla l’officina?','Quale numero di telefono posso annotare?','Come può raggiungerla telefonicamente l’officina?'],
+    askTime:['Quando le andrebbe bene?','Quale orario preferisce?','Ha un giorno o un orario preferito?'],
+    correction:'Perfetto, ho corretto il dato.', needClarification:'Quale informazione è corretta?', unknown:'Non sicuro', notProvided:'Da completare',
+  },
+  en: {
+    localeName:'English', welcome:'Hi! I’m {name}, the digital receptionist for the fictional Säntis Garage. Please use test details only. Nothing is sent and no appointment is booked. How can I help?',
+    placeholder:'Write a message…', send:'Send', newDemo:'New demo', testMode:'TEST MODE', staging:'v2.2 Staging', owner:'OWNER VIEW', liveDraft:'LIVE DRAFT', ready:'READY',
+    requestedWork:'Requested work', vehicle:'Vehicle', year:'Year', customer:'Name', phone:'Phone', preferredTime:'Preferred time', language:'Language', notes:'Notes', validation:'Validation', raw:'Conversation', copy:'Copy summary', copied:'Copied', status:'Status',
+    demoWarn:'Demo only · Use test data · Nothing is sent or booked.', typing:'{name} is typing…', phoneValid:'Format looks plausible; number ownership is not verified.', phoneInvalid:'The phone number format still looks incomplete.',
+    reviewTitle:'Please check this quickly:', reviewAsk:'Is that correct? You can still correct anything, or reply “Yes” to confirm.', finalThanks:'Thanks. The demo request is prepared for the garage. The preferred time is still awaiting confirmation.',
+    appointmentBoundary:'Not yet. I only recorded that time as your preference; the garage still needs to confirm it.',
+    greet:['Hi! How can I help?','Hello! What would you like the garage to do?','Hi – sure. What does the vehicle need?'],
+    thanks:['You’re welcome.','Of course.','Happy to help.'], goodbye:['Goodbye!','See you – take care.','Thanks, have a good day.'],
+    annoyed:['Sorry — you’re right.','Understood, thanks for pointing that out.','Sorry about the repetition.'],
+    askWork:['What would you like the garage to do?','What work does the vehicle need?','What service or repair should I note?'],
+    askVehicle:['What vehicle is it?','Can you give me the make and model?','Which vehicle model should I note?'],
+    askYear:['What year is the vehicle?','Do you know roughly what year it is?','Which year should I note for the vehicle?'],
+    askName:['What name should I put on the request?','What name may I use?','How should I record your name?'],
+    askPhone:['What phone number can the garage reach you on?','Which phone number should I note?','How can the garage contact you by phone?'],
+    askTime:['When would suit you roughly?','What time would you prefer?','Do you have a preferred day or time?'],
+    correction:'Got it — I’ve corrected that.', needClarification:'Which detail is the correct one?', unknown:'Not sure', notProvided:'Still needed',
+  }
+};
+
+function tr(lang, key, vars={}) {
+  let v = t[lang]?.[key] ?? t.en[key] ?? key;
+  if (typeof v === 'string') {
+    Object.entries(vars).forEach(([k,val]) => v = v.replaceAll(`{${k}}`, String(val)));
+  }
+  return v;
+}
+
+const WORK_MAP = [
+  {cat:'Oil / service', re:/(oil(?:\s*change)?|service|öl\w*|oel\w*|vidange|tagliando|olio|inspektion)/i},
+  {cat:'Brakes', re:/\b(brake|brakes|brems|frein|freni|freno)\w*/i},
+  {cat:'Tires', re:/\b(tire|tyre|reifen|pneu|pneus|gomma|gomme|winterreifen|sommerreifen)\w*/i},
+  {cat:'Battery', re:/\b(battery|batterie|batteria)\w*/i},
+  {cat:'Noise / diagnosis', re:/\b(noise|noisy|geräusch|gerausch|bruit|rumore|diagnos)\w*/i},
+  {cat:'Inspection', re:/\b(mfk|inspection|contrôle|controle|revisione)\w*/i},
+];
+
+const LANG_HINTS = {
+  de: ['ich','mein','meine','bitte','danke','fahrzeug','auto','termin','donnerstag','freitag','bremsen','reifen','öl','modell','baujahr','können','kann'],
+  fr: ['je','mon','ma','merci','bonjour','voiture','rendez-vous','jeudi','vendredi','freins','pneus','modèle','modele','année','annee','pouvez','garage'],
+  it: ['io','mio','mia','grazie','buongiorno','auto','appuntamento','giovedì','giovedi','venerdì','freni','gomme','modello','anno','officina'],
+  en: ['i','my','please','thanks','hello','car','appointment','thursday','friday','brakes','tires','model','year','garage','can'],
+};
+
+function blankState(defaultLang='de') {
+  return {
+    language: defaultLang,
+    languageLocked: false,
+    workItems: [],
+    vehicle: { make:'', model:'', year:'', plate:'' },
+    customer: { name:'', phone:'' },
+    preferredTime:'', notes:[], rawMessages:[], correctionHistory:[],
+    finalized:false, phoneValidation:'', ownerStatus:'New request', lastPromptByIntent:{}, awaitingClarification:'',
+  };
+}
+
+function detectLanguage(text, current='de', locked=false) {
+  const s = text.trim().toLowerCase();
+  if (/continue in english|speak english|in english/.test(s)) return {lang:'en', explicit:true};
+  if (/weiter auf deutsch|auf deutsch|sprechen wir deutsch/.test(s)) return {lang:'de', explicit:true};
+  if (/continuer en français|en français|parler français/.test(s)) return {lang:'fr', explicit:true};
+  if (/continuiamo in italiano|in italiano|parlare italiano/.test(s)) return {lang:'it', explicit:true};
+  if (locked) return {lang:current, explicit:false};
+  if (s.length < 5 || /^(ok|okay|ja|oui|si|sì|no|non|ciao|hi|hey)$/.test(s)) return {lang:current, explicit:false};
+  const words = s.replace(/[^\p{L}0-9+ ]/gu,' ').split(/\s+/).filter(Boolean);
+  const scores = {de:0,fr:0,it:0,en:0};
+  for (const [lang,hints] of Object.entries(LANG_HINTS)) {
+    for (const w of words) if (hints.includes(w)) scores[lang]++;
+  }
+  const ranked = Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  return ranked[0][1] >= 2 && ranked[0][1] > ranked[1][1] ? {lang:ranked[0][0], explicit:false} : {lang:current, explicit:false};
+}
+
+function isGreeting(s){ return /^(hi|hello|hey|grüezi|gruezi|hallo|bonjour|salut|buongiorno|ciao)[!. ]*$/i.test(s.trim()); }
+function isThanks(s){ return /^(thanks|thank you|danke|merci|grazie|thx)[!. ]*$/i.test(s.trim()); }
+function isGoodbye(s){ return /^(bye|goodbye|tschüss|tschuess|auf wiedersehen|au revoir|ciao|arrivederci)[!. ]*$/i.test(s.trim()); }
+function isAnnoyed(s){ return /(already told|i told you|schon gesagt|bereits gesagt|je l'ai déjà dit|je l’ai déjà dit|te l'ho già detto|te l’ho già detto|why.*again|warum.*nochmal|encore\s*\?|di nuovo\s*\?)/i.test(s); }
+function isAffirmative(s){ return /^(yes|yes that's right|yes thats right|ja|ja stimmt|stimmt|oui|oui c'est correct|si|sì|corretto|correct|ok|okay)$/i.test(s.trim()); }
+function isBookingTrap(s){ return /(booked|confirmed|gebucht|bestätigt|bestaetigt|réservé|reserve|confirmé|confermato|prenotato)/i.test(s) && /(thursday|friday|monday|tuesday|wednesday|saturday|sunday|montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|lunedì|lunedi|martedì|martedi|mercoledì|mercoledi|giovedì|giovedi|venerdì|venerdi|sabato|domenica|\d{1,2}[:.]\d{2})/i.test(s); }
+
+function validPhone(phone) {
+  const digits = phone.replace(/\D/g,'');
+  return digits.length >= 8 && digits.length <= 15;
+}
+
+function addWorkItems(state, text) {
+  const found = [];
+  for (const item of WORK_MAP) if (item.re.test(text)) found.push(item.cat);
+  if (found.length) {
+    for (const cat of found) {
+      if (!state.workItems.some(x=>x.category===cat)) state.workItems.push({category:cat, description:text.trim()});
+    }
+  }
+  return found.length>0;
+}
+
+function extractPhone(text) {
+  const matches = text.match(/(?:\+\d{1,3}[\s().-]*)?(?:\d[\s().-]*){7,14}\d/g);
+  if (!matches) return '';
+  const cand = matches.map(x=>x.trim()).sort((a,b)=>b.length-a.length)[0];
+  return validPhone(cand) ? cand : '';
+}
+
+function extractYear(text) {
+  const years = [...text.matchAll(/\b(19\d{2}|20\d{2})\b/g)].map(m=>m[1]);
+  return years.length ? years[years.length-1] : '';
+}
+
+function detectUnknownYear(text) { return /(not sure|don't know|do not know|weiss nicht|weiß nicht|nicht sicher|je ne sais pas|pas sûr|pas sure|non lo so|non sono sicuro|non sono sicura)/i.test(text); }
+
+function extractName(text) {
+  const patterns = [
+    /(?:you can use|use|my name is|i am|i'm)\s+([\p{L}'-]{2,30})(?:\s+([\p{L}'-]{2,30}))?/iu,
+    /(?:ich heisse|ich heiße|mein name ist|verwenden sie|nimm|nehmen sie)\s+([\p{L}'-]{2,30})(?:\s+([\p{L}'-]{2,30}))?/iu,
+    /(?:je m'appelle|je m’appelle|mon nom est|vous pouvez utiliser)\s+([\p{L}'-]{2,30})(?:\s+([\p{L}'-]{2,30}))?/iu,
+    /(?:mi chiamo|il mio nome è|il mio nome e|può usare|puo usare)\s+([\p{L}'-]{2,30})(?:\s+([\p{L}'-]{2,30}))?/iu,
+  ];
+  for (const re of patterns) {
+    const m = text.match(re);
+    if (m) return [m[1],m[2]].filter(Boolean).join(' ').replace(/[.,!?]+$/,'');
+  }
+  return '';
+}
+
+function extractVehicle(text, state) {
+  let changed = false;
+  const commonMakes = ['Volkswagen','VW','Audi','BMW','Mercedes','Toyota','Honda','Ford','Opel','Renault','Peugeot','Citroen','Citroën','Fiat','Skoda','Škoda','Seat','Tesla','Volvo','Mazda','Nissan','Hyundai','Kia','Dacia','Porsche','Mini'];
+  for (const make of commonMakes) {
+    const re = new RegExp(`\\b${make.replace(/[.*+?^${}()|[\\]\\]/g,'\\$&')}\\b`,'i');
+    if (re.test(text) && !state.vehicle.make) { state.vehicle.make = make === 'VW' ? 'Volkswagen' : make; changed = true; break; }
+  }
+  const modelPatterns = [
+    /\b(Golf\s*[1-8]?)\b/i,/\b(Polo)\b/i,/\b(Passat)\b/i,/\b(Tiguan)\b/i,/\b(Touran)\b/i,/\b(A[1-8]|Q[2-8]|RS\d|S\d)\b/i,
+    /\b(3(?:er)?|5(?:er)?|X[1-7]|M[2-8])\b/i,/\b(C[- ]?Klasse|E[- ]?Klasse|A[- ]?Klasse|GLA|GLC|GLE)\b/i,/\b(Model\s*[3YSX])\b/i,
+    /\b(Corsa|Astra|Clio|Megane|Mégane|208|308|500|Octavia|Fabia|Leon|Ibiza|Yaris|Corolla|Civic|Focus|Fiesta)\b/i
+  ];
+  for (const re of modelPatterns) {
+    const m = text.match(re); if (m) { state.vehicle.model = m[1]; changed = true; break; }
+  }
+  return changed;
+}
+
+function extractPreferredTime(text) {
+  const day = text.match(/\b(monday|tuesday|wednesday|thursday|friday|saturday|sunday|montag|dienstag|mittwoch|donnerstag|freitag|samstag|sonntag|lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche|lunedì|lunedi|martedì|martedi|mercoledì|mercoledi|giovedì|giovedi|venerdì|venerdi|sabato|domenica)\b/i);
+  const time = text.match(/\b([01]?\d|2[0-3])[:.]([0-5]\d)\b/);
+  const relative = text.match(/\b(today|tomorrow|heute|morgen|aujourd'hui|demain|oggi|domani|morning|afternoon|evening|vormittag|nachmittag|abend|matin|après-midi|apres-midi|soir|mattina|pomeriggio|sera)\b/i);
+  if (day || time || relative) return [day?.[0], relative?.[0], time?.[0]].filter(Boolean).join(' ');
+  return '';
+}
+
+function correctionPair(text) {
+  const patterns = [
+    /\b(19\d{2}|20\d{2})\b\s*[,;:-]?\s*(?:not|instead of)\s*\b(19\d{2}|20\d{2})\b/i,
+    /\b(19\d{2}|20\d{2})\b\s*[,;:-]?\s*(?:nicht)\s*\b(19\d{2}|20\d{2})\b/i,
+    /\b(19\d{2}|20\d{2})\b\s*[,;:-]?\s*(?:pas)\s*\b(19\d{2}|20\d{2})\b/i,
+    /\b(19\d{2}|20\d{2})\b\s*[,;:-]?\s*(?:non)\s*\b(19\d{2}|20\d{2})\b/i,
+  ];
+  for (const re of patterns) { const m=text.match(re); if(m) return {newValue:m[1], oldValue:m[2]}; }
+  const notThen = text.match(/(?:not|nicht|pas|non)\s*\b(19\d{2}|20\d{2})\b.*?\b(19\d{2}|20\d{2})\b/i);
+  if (notThen) return {oldValue:notThen[1], newValue:notThen[2]};
+  const meant = text.match(/(?:i meant|ich meinte|je voulais dire|intendevo)\s*\b(19\d{2}|20\d{2})\b/i);
+  if (meant) return {newValue:meant[1], oldValue:''};
+  return null;
+}
+
+function extractFacts(state, text) {
+  const events = [];
+  const yearCorr = correctionPair(text);
+  if (yearCorr) {
+    const prev = state.vehicle.year;
+    state.vehicle.year = yearCorr.newValue;
+    state.correctionHistory.push({field:'vehicle.year', previousValue:prev || yearCorr.oldValue, newValue:yearCorr.newValue});
+    events.push('correction');
+  } else {
+    const y = extractYear(text);
+    if (y && !state.vehicle.year) state.vehicle.year = y;
+    if (detectUnknownYear(text) && !state.vehicle.year) state.vehicle.year = 'unknown';
+  }
+
+  addWorkItems(state, text);
+  extractVehicle(text, state);
+  const ph = extractPhone(text); if (ph) { state.customer.phone = ph; state.phoneValidation = validPhone(ph) ? 'valid' : 'invalid'; }
+  const nm = extractName(text); if (nm) state.customer.name = nm;
+  const pt = extractPreferredTime(text); if (pt) state.preferredTime = pt;
+
+  // Generic model capture when asked and no model exists: short alphanumeric vehicle-looking answer.
+  if (!state.vehicle.model) {
+    const m = text.trim().match(/^([A-Za-zÀ-ÿ]{2,15}\s?[-]?[A-Za-z0-9]{0,8}(?:\s\d)?)$/);
+    if (m && !/^(yes|no|ja|nein|oui|non|si|sì|ok|okay|thanks|danke|merci|grazie)$/i.test(m[1])) state.vehicle.model = m[1];
+  }
+
+  return events;
+}
+
+function nextMissing(state) {
+  if (!state.workItems.length) return 'work';
+  if (!state.vehicle.model && !state.vehicle.make) return 'vehicle';
+  if (!state.vehicle.year) return 'year';
+  if (!state.customer.name) return 'name';
+  if (!state.customer.phone) return 'phone';
+  if (!state.preferredTime) return 'time';
+  return null;
+}
+
+function complexityOf(text) {
+  const len = text.trim().length;
+  const facts = [WORK_MAP.some(x=>x.re.test(text)), /\b(19\d{2}|20\d{2})\b/.test(text), /\+?\d[\d\s().-]{7,}/.test(text), /\b(thursday|friday|donnerstag|freitag|jeudi|vendredi|giovedì|venerdì|giovedi|venerdi)\b/i.test(text)].filter(Boolean).length;
+  if (len < 15 && facts === 0) return 'tiny';
+  if (len > 100 || facts >= 3 || /not|nicht|pas|non|meant|meinte|voulais dire|intendevo/i.test(text)) return 'complex';
+  return 'normal';
+}
+
+function buildOwnerSummary(state, labels) {
+  const works = state.workItems.map(x=>x.category).join(', ') || labels.notProvided;
+  const vehicle = [state.vehicle.make,state.vehicle.model].filter(Boolean).join(' ') || labels.notProvided;
+  const year = state.vehicle.year === 'unknown' ? labels.unknown : (state.vehicle.year || labels.notProvided);
+  const phoneNote = state.phoneValidation === 'valid' ? labels.phoneValid : (state.customer.phone ? labels.phoneInvalid : '');
+  return [
+    `${labels.requestedWork}: ${works}`,
+    `${labels.vehicle}: ${vehicle}`,
+    `${labels.year}: ${year}`,
+    `${labels.customer}: ${state.customer.name || labels.notProvided}`,
+    `${labels.phone}: ${state.customer.phone || labels.notProvided}`,
+    `${labels.preferredTime}: ${state.preferredTime || labels.notProvided}`,
+    `${labels.language}: ${state.language.toUpperCase()}`,
+    phoneNote ? `${labels.validation}: ${phoneNote}` : '',
+    `Status: ${state.finalized ? 'Prepared (demo)' : state.ownerStatus}`,
+  ].filter(Boolean).join('\n');
+}
+
+
+const $ = id => document.getElementById(id);
+const storeKey = 'boujem3a-v22-state';
+let state = loadState();
+let pendingTexts = [];
+let burstTimer = null;
+let responseToken = 0;
+let processing = false;
+let reviewShown = false;
+
+function loadState(){ try { const x=JSON.parse(localStorage.getItem(storeKey)); return x || blankState(businessConfig.languages.default); } catch { return blankState(businessConfig.languages.default); } }
+function save(){ localStorage.setItem(storeKey, JSON.stringify(state)); }
+function rand([a,b]){ return Math.round(a + Math.random()*(b-a)); }
+function pick(arr,intent){ const last=state.lastPromptByIntent?.[intent]; let choices=arr.map((_,i)=>i).filter(i=>i!==last); if(!choices.length) choices=arr.map((_,i)=>i); const idx=choices[Math.floor(Math.random()*choices.length)]; state.lastPromptByIntent ||= {}; state.lastPromptByIntent[intent]=idx; return arr[idx]; }
+function fmtName(s){return s ? s.replace(/\b\w/g,c=>c.toUpperCase()) : s;}
+function localized(key,vars={}){return tr(state.language,key,vars)}
+function append(role,text,extra=''){
+  const div=document.createElement('div'); div.className=`msg ${role} ${extra}`; div.textContent=text; $('chatBody').appendChild(div); $('chatBody').scrollTop=$('chatBody').scrollHeight;
+  if(role==='user'||role==='assistant') state.rawMessages.push({role:role==='user'?'customer':'assistant',text});
+  save(); renderOwner();
+}
+function showReview(){
+  const labels = t[state.language];
+  const works=state.workItems.map(x=>x.category).join(', ');
+  const vehicle=[state.vehicle.make,state.vehicle.model].filter(Boolean).join(' ');
+  const year=state.vehicle.year==='unknown'?labels.unknown:state.vehicle.year;
+  const wrap=document.createElement('div'); wrap.className='msg assistant reviewCard';
+  wrap.innerHTML=`<strong>${labels.reviewTitle}</strong><div>${labels.requestedWork}: ${esc(works)}</div><div>${labels.vehicle}: ${esc(vehicle)}</div><div>${labels.year}: ${esc(year)}</div><div>${labels.customer}: ${esc(state.customer.name)}</div><div>${labels.phone}: ${esc(state.customer.phone)}</div><div>${labels.preferredTime}: ${esc(state.preferredTime)}</div><div style="margin-top:7px">${labels.reviewAsk}</div>`;
+  $('chatBody').appendChild(wrap); $('chatBody').scrollTop=$('chatBody').scrollHeight; reviewShown=true;
+}
+function esc(s=''){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));}
+
+function renderStatic(){
+  const L=t[state.language];
+  document.documentElement.lang=state.language;
+  $('brandName').textContent=`${businessConfig.business.name} · ${businessConfig.receptionist.displayName}`;
+  $('brandSub').textContent='Garage AI Receptionist Demo'; $('testBadge').textContent=L.testMode; $('versionBadge').textContent=L.staging;
+  $('chatTitle').textContent=businessConfig.receptionist.displayName; $('chatSub').textContent=`${businessConfig.business.name} · ${L.testMode}`;
+  $('input').placeholder=L.placeholder; $('send').textContent=L.send; $('reset').textContent=L.newDemo; $('ownerTitle').textContent=`${L.owner} · ${L.liveDraft}`; $('ownerSub').textContent=L.demoWarn;
+  $('statusLabel').textContent=L.status; $('copy').textContent=L.copy; $('toggleRaw').textContent=L.raw; $('footer').textContent=L.demoWarn; $('typingText').textContent=tr(state.language,'typing',{name:businessConfig.receptionist.displayName});
+  $('langSelect').value=state.language;
+}
+
+function renderOwner(){
+  const L=t[state.language];
+  const items=[
+    [L.requestedWork,state.workItems.map(x=>x.category).join(', ')],
+    [L.vehicle,[state.vehicle.make,state.vehicle.model].filter(Boolean).join(' ')],
+    [L.year,state.vehicle.year==='unknown'?L.unknown:state.vehicle.year],
+    [L.customer,state.customer.name], [L.phone,state.customer.phone], [L.preferredTime,state.preferredTime], [L.language,L.localeName],
+    [L.validation,state.customer.phone ? (validPhone(state.customer.phone)?L.phoneValid:L.phoneInvalid) : '']
+  ];
+  $('ownerFields').innerHTML=items.map(([k,v])=>`<div class="field"><div class="label">${esc(k)}</div><div class="value ${v?'':'empty'}">${esc(v||L.notProvided)}</div></div>`).join('');
+  $('status').value=state.ownerStatus || 'New request';
+  $('raw').innerHTML=state.rawMessages.map(m=>`<div><strong>${m.role==='customer'?'Customer':businessConfig.receptionist.displayName}:</strong> ${esc(m.text)}</div>`).join('');
+  save();
+}
+
+function promptFor(intent){ const L=t[state.language]; const key={work:'askWork',vehicle:'askVehicle',year:'askYear',name:'askName',phone:'askPhone',time:'askTime'}[intent]; return pick(L[key],intent); }
+function replyDelay(text){ const c=complexityOf(text); return Math.min(rand(businessConfig.pacing[c]), businessConfig.pacing.hardCap); }
+async function humanReply(text, sourceText=''){
+  const myToken=++responseToken; const total=replyDelay(sourceText||text); const typingStart=Math.min(rand(businessConfig.pacing.typingStart),Math.max(250,total-150));
+  await sleep(typingStart); if(myToken!==responseToken)return; $('typing').hidden=false;
+  await sleep(Math.max(0,total-typingStart)); if(myToken!==responseToken)return; $('typing').hidden=true; append('assistant',text);
+}
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+
+function shouldAskPhoneAgain(){ return !state.customer.phone || !validPhone(state.customer.phone); }
+function nextIntent(){ const n=nextMissing(state); if(n==='phone' && state.customer.phone && !validPhone(state.customer.phone)) return 'phone'; return n; }
+
+async function processBatch(texts){
+  processing=true; const combined=texts.join('\n');
+  const langResult=detectLanguage(combined,state.language,state.languageLocked); if(langResult.lang!==state.language){ state.language=langResult.lang; if(langResult.explicit) state.languageLocked=true; renderStatic(); renderOwner(); }
+  for(const tx of texts) append('user',tx);
+  const last=texts[texts.length-1].trim();
+  if(langResult.explicit && texts.length===1 && !extractive(last)) { await humanReply(pick(t[state.language].greet,'langSwitch'),combined); processing=false; return; }
+  if(isBookingTrap(combined) && !businessConfig.scheduling.liveAvailabilityEnabled){ await humanReply(t[state.language].appointmentBoundary,combined); processing=false; return; }
+  if(isGreeting(last) && texts.length===1){ await humanReply(pick(t[state.language].greet,'greet'),last); processing=false; return; }
+  if(isThanks(last) && texts.length===1){ await humanReply(pick(t[state.language].thanks,'thanks'),last); processing=false; return; }
+  if(isGoodbye(last) && texts.length===1){ await humanReply(pick(t[state.language].goodbye,'bye'),last); processing=false; return; }
+
+  const annoyed=isAnnoyed(combined); const events=[]; for(const tx of texts) events.push(...extractFacts(state,tx));
+  state.customer.name=fmtName(state.customer.name); if(state.customer.phone) state.phoneValidation=validPhone(state.customer.phone)?'valid':'invalid'; save(); renderOwner();
+
+  if(state.finalized){ await humanReply(annoyed?pick(t[state.language].annoyed,'annoyed'):pick(t[state.language].thanks,'afterFinal'),combined); processing=false; return; }
+  if(isAffirmative(last) && nextMissing(state)===null && reviewShown){ state.finalized=true; state.ownerStatus='Needs review'; save(); renderOwner(); await humanReply(t[state.language].finalThanks,combined); processing=false; return; }
+
+  const miss=nextIntent(); let reply='';
+  if(events.includes('correction')) reply += t[state.language].correction + ' ';
+  if(annoyed) reply = pick(t[state.language].annoyed,'annoyed') + ' ' + reply;
+  if(miss){ reply += promptFor(miss); reviewShown=false; await humanReply(reply.trim(),combined); }
+  else { if(reply.trim()) await humanReply(reply.trim(),combined); await sleep(100); showReview(); }
+  processing=false;
+}
+
+function extractive(s){return /(oil|service|öl|brake|brems|frein|freni|tire|reifen|pneu|gomme|\d{4}|\+?\d[\d\s().-]{7,}|golf|audi|bmw|mercedes|toyota|honda|ford|opel|renault|peugeot|tesla)/i.test(s)}
+function queueMessage(text){
+  if(!text.trim())return; pendingTexts.push(text.trim()); $('input').value=''; responseToken++; $('typing').hidden=true;
+  clearTimeout(burstTimer); const delay=rand(businessConfig.pacing.burstDebounce); burstTimer=setTimeout(()=>{ const batch=[...pendingTexts]; pendingTexts=[]; processBatch(batch); },delay);
+}
+
+function resetDemo(){
+  responseToken++; clearTimeout(burstTimer); pendingTexts=[]; state=blankState(businessConfig.languages.default); reviewShown=false; localStorage.removeItem(storeKey); $('chatBody').innerHTML=''; $('typing').hidden=true; renderStatic(); renderOwner(); append('assistant',tr(state.language,'welcome',{name:businessConfig.receptionist.displayName}));
+}
+
+const scenarios={
+  'de-normal':['Grüezi','Ich brauche einen Ölwechsel für meinen Golf 5, Baujahr 2018.','Mein Name ist Test Meier, +41 79 000 11 22. Donnerstag 14:00 wäre gut.'],
+  'en-annoyed':['Hi, I need my brakes checked on a Golf 5.','It is a 2020 model.','My name is Test Hiba and you can use +41 79 000 11 22.','I already told you the model! Friday afternoon works.'],
+  'fr-correction':['Bonjour, vidange et freins pour ma Golf 5.','Elle est de 2020.','Pardon, 2024, pas 2020.','Je m’appelle Test Hiba, +41 79 000 11 22. Jeudi 14:00.'],
+  'it-multi':['Buongiorno, devo fare tagliando, freni e gomme sulla Golf 5 del 2019.','Mi chiamo Test Luca, +41 79 000 11 22.','Venerdì pomeriggio andrebbe bene.']
+};
+async function loadScenario(){ const key=$('scenario').value; if(!key)return; resetDemo(); for(const msg of scenarios[key]){ queueMessage(msg); await sleep(900); } }
+
+$('send').addEventListener('click',()=>queueMessage($('input').value));
+$('input').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();queueMessage($('input').value)}});
+$('reset').addEventListener('click',resetDemo);
+$('runScenario').addEventListener('click',loadScenario);
+$('langSelect').addEventListener('change',e=>{state.language=e.target.value; state.languageLocked=true; save(); renderStatic(); renderOwner();});
+$('status').addEventListener('change',e=>{state.ownerStatus=e.target.value; save();});
+$('toggleRaw').addEventListener('click',()=>$('raw').classList.toggle('open'));
+$('copy').addEventListener('click',async()=>{ const L=t[state.language]; await navigator.clipboard.writeText(buildOwnerSummary(state,L)); const old=$('copy').textContent; $('copy').textContent=L.copied; setTimeout(()=>$('copy').textContent=old,1200); });
+
+renderStatic(); renderOwner(); if(!state.rawMessages.length) append('assistant',tr(state.language,'welcome',{name:businessConfig.receptionist.displayName})); else { for(const m of state.rawMessages){ const div=document.createElement('div'); div.className=`msg ${m.role==='customer'?'user':'assistant'}`; div.textContent=m.text; $('chatBody').appendChild(div);} }
+</script></body></html>
